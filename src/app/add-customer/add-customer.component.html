@@ -1,0 +1,32 @@
+
+<form (ngSubmit)="addcustomer(f['value'])" #f="ngForm">
+    <label for="inputName" class="form-label">Name</label>
+    <input [ngModel] name="name" #name="ngModel" type="text" class="form-control" id="inputName" required
+        minlength="4" />
+    <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger">
+        <div *ngIf="name.errors?.['required']">Name is required.</div>
+        <div *ngIf="name.errors?.['minlength']">
+            Name must be at least 4 characters long.
+        </div>
+    </div>
+
+    <label for="inputEmail" class="form-label">Email</label>
+    <input [ngModel] #email="ngModel" name="email" type="type" class="form-control" id="inputEmail" required />
+    <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
+        <div *ngIf="email.errors?.['required']">Email is required.</div>
+    </div>
+    <label for="inputImageUrl" class="form-label">Image url</label>
+    <input [ngModel] #imageUrl="ngModel" name="imageUrl" type="text" class="form-control" id="inputImageUrl" required />
+    <div *ngIf="imageUrl.invalid && (imageUrl.dirty || imageUrl.touched)" class="alert alert-danger">
+        <div *ngIf="imageUrl.errors?.['required']">imageUrl is required.</div>
+    </div>
+    <label for="inputGender" class="form-label">Gender</label>
+    <input [ngModel] #gender="ngModel" name="gender" type="text" class="form-control" id="inputGender" required maxlength="5" />
+    <div *ngIf="gender.invalid && (gender.dirty || gender.touched)" class="alert alert-danger">
+        <div *ngIf="gender.errors?.['required']">Gender is required.</div>
+    </div>
+
+    <button type="submit" class="btn btn-primary" [disabled]="!f.valid">
+        Submit
+    </button>
+</form>
